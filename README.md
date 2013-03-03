@@ -23,15 +23,22 @@
 
 # Prerequisites
 * MongoDB
+
 Download it from <a href='http://www.mongodb.org/downloads'>here</a>
+
 start it using following command:
 
 		mongod --fork --master --logpath /tmp/mongodb.log --logappend --noauth
 
+
 * Memcached/Couchbase
-You either need memcached or couchbase cache.
+
+you either need memcached or couchbase cache (for distributed caching)
+
 - Memcached
+
 Download it from <a href='http://memcached.org/'>here</a>
+
 start is using following command:
 
 		memcached -d
@@ -40,7 +47,9 @@ start it on a different port using following command:
 
 		memcached -d -p 11212
 
+
 - Couchbase
+
 Download it from <a href='http://www.couchbase.com/download'>here</a>
 
 
@@ -50,19 +59,26 @@ Download it from <a href='http://www.couchbase.com/download'>here</a>
 		cd SimpleJavaWS
 
 		mvn clean install
-(above command runs the tests and builds 1.0-SNAPSHOT jar)
+(above command runs the tests and builds web-service-1.0-SNAPSHOT.war)
+
 
 # Setup
 
 Configuration file can be found <a href='https://github.com/parekhparth/SimpleJavaWS/service/src/main/resources/META-INF/configuration.properties'>here</a>
+
 Change the "cache.type=memcached" to whatever cache you're using.
+
 For e.g.: If you're using multiple Memcached, change the "memcached.cache.connection.uri=localhost:11211,localhost:11212" appropriately
+
 Assuming maven and everything else is setup; you're ready to test the web service.
+
 
 # Web Service
 
 Web service reads from cache and writes to disk. Cache invalidation happens during update and new value is pushed to cache after successful DB update
+
 The web service implementend in the template is Product Web Service with following model:
+
 
 ## Product Data Model
 Product contains Name, Description, Price and Status (ACTIVE, DISABLED)
