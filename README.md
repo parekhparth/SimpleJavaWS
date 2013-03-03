@@ -212,6 +212,6 @@ above command will start the server on 8110 port. You can run following example 
 
 # LICENSE
 
-This project is basically "Do whatever you want" MIT License => http://www.tldrlegal.com/license/mit-license
+This project is under "Do whatever you want" MIT License => http://www.tldrlegal.com/license/mit-license
 
-However, all the other Open source frameworks used in this project come with their own respective licenses.
+However, all the other Open source frameworks/technologies used in this project come with their own respective licenses.
