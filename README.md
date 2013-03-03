@@ -1,5 +1,5 @@
 # Simple Java Web Service Template
-* This is a Java web service template which uses a distributed cache layer over persistent data store (MongoDB in this case).
+* This is a Java web service template which uses distributed cache over persistent data store (MongoDB in this case).
 * It's an ideal framework to scale read heavy web applications.
 * Current implementation uses MongoDB as the persistent storage and can support Memcached or Couchbase for distributed caching and EhCache for local caching.
 * Cache invalidation happens during update.
