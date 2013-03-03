@@ -1,10 +1,10 @@
 # Simple Java Web Service Template
 * This is a Java web service template which uses distributed cache over persistent data store (MongoDB in this case).
 * It's an ideal framework to scale read heavy web applications.
-* Current implementation uses MongoDB as the persistent storage and can support Memcached or Couchbase for distributed caching and EhCache for local caching.
+* Current implementation uses MongoDB as the persistent storage and, can support Memcached or Couchbase for distributed caching and EhCache for local caching.
 * Cache invalidation happens during update.
 * The Java WS framework is mostly servlet web services hosted on Apache Tomcat container.
-* The same WAR can be run across a pool of different tomcat containers.
+
 
 # Technologies and Frameworks used
 * __Spring Framework (for DI)__
@@ -213,4 +213,5 @@ above command will start the server on 8110 port. You can run following example 
 # LICENSE
 
 This project is basically "Do whatever you want" MIT License => http://www.tldrlegal.com/license/mit-license
-However, all the other Open source frameworks used in this project come with their own licenses.
+
+However, all the other Open source frameworks used in this project come with their own respective licenses.
