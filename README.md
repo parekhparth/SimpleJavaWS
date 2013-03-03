@@ -25,6 +25,7 @@
 * MongoDB
 Download it from <a href='http://www.mongodb.org/downloads'>here</a>
 start it using following command:
+
 		mongod --fork --master --logpath /tmp/mongodb.log --logappend --noauth
 
 * Memcached/Couchbase
@@ -32,8 +33,11 @@ You either need memcached or couchbase cache.
 - Memcached
 Download it from <a href='http://memcached.org/'>here</a>
 start is using following command:
+
 		memcached -d
+		
 start it on a different port using following command:
+
 		memcached -d -p 11212
 
 - Couchbase
@@ -78,6 +82,7 @@ after all the tests are succesfully run; you can build the WAR and start the Tom
 above command will start the server on 8110 port. You can run following example commands to test web service:
 
 * Create Product
+
 ```
 	curl -i -H "Content-Type: application/json" -X POST -d \
 	'{
@@ -94,10 +99,11 @@ above command will start the server on 8110 port. You can run following example 
 		"description" : "This is a description of product name 1",
 		"status" : "ACTIVE",
 		"price" : 0.99
-}
+	}
 ```
 
 * Get Product
+
 ```
 	curl "http://localhost:8110/ws/products/v1/51337401036431a3dfc546bf"
 ```
@@ -113,6 +119,9 @@ above command will start the server on 8110 port. You can run following example 
 ```
 
 * Update Product
+
+- update all fields
+
 ```
 	curl -i -H "Content-Type: application/json" -X PUT -d \
 	'{
@@ -122,7 +131,6 @@ above command will start the server on 8110 port. You can run following example 
 		"status": "ACTIVE"
 	}' 'http://localhost:8110/ws/products/v1'
 ```
-
 ```
 	{
 		"id" : "51337401036431a3dfc546bf",
@@ -132,6 +140,7 @@ above command will start the server on 8110 port. You can run following example 
 		"price" : 0.99
 	}
 ```
+- update only description and status
 
 ```
 	curl -i -H "Content-Type: application/json" -X PUT -d \
@@ -140,7 +149,6 @@ above command will start the server on 8110 port. You can run following example 
 		"status": "DISABLED"
 	}' 'http://localhost:8110/ws/products/v1'
 ```
-
 ```
 	{
 		"id" : "51337401036431a3dfc546bf",
