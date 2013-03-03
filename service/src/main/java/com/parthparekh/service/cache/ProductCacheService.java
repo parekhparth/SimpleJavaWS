@@ -28,7 +28,7 @@ import java.util.List;
 @Transactional
 @Qualifier("cache")
 public class ProductCacheService implements ProductService {
-	private static final Logger logger = LoggerFactory.getLogger(ProductCacheService.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProductCacheService.class);
     private static final String ALL_PRODUCTS_CACHE_KEY = "allProductsCacheKey";
 
     @Autowired

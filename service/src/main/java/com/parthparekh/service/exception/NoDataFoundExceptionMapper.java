@@ -15,8 +15,8 @@ import javax.ws.rs.ext.Provider;
  **/
 @Provider
 public class NoDataFoundExceptionMapper implements ExceptionMapper<NoDataFoundException> {
-	@Override
-	public Response toResponse(NoDataFoundException e) {
+    @Override
+    public Response toResponse(NoDataFoundException e) {
         Response.ResponseBuilder response = Response.status(Response.Status.NOT_FOUND).type(MediaType.APPLICATION_JSON);
         ExceptionMessage msg = new ExceptionMessage(e.getMessage());
         Gson gson = new GsonBuilder().setPrettyPrinting().create();

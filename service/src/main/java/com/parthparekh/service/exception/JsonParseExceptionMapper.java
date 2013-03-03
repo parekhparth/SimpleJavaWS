@@ -16,12 +16,12 @@ import javax.ws.rs.ext.Provider;
  **/
 @Provider
 public class JsonParseExceptionMapper implements ExceptionMapper<JsonParseException> {
-	@Override
-	public Response toResponse(JsonParseException e) {
-		Response.ResponseBuilder response = Response.status(Response.Status.BAD_REQUEST).type(MediaType.APPLICATION_JSON);
+    @Override
+    public Response toResponse(JsonParseException e) {
+        Response.ResponseBuilder response = Response.status(Response.Status.BAD_REQUEST).type(MediaType.APPLICATION_JSON);
         ExceptionMessage msg = new ExceptionMessage(e.getMessage());
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         response.entity(gson.toJson(msg) + "\n");
-		return response.build();
-	}
+        return response.build();
+    }
 }

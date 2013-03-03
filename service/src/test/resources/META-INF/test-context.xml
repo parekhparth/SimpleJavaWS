@@ -27,7 +27,7 @@
     <mongo:repositories base-package="com.parthparekh.service" mongo-template-ref="productMongoTemplate" />
 
     <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-       	<property name="configLocation" value="classpath:/META-INF/test-ehcache.xml"/>
-   	</bean>
+           <property name="configLocation" value="classpath:/META-INF/test-ehcache.xml"/>
+       </bean>
 
 </beans>

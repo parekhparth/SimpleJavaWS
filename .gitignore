@@ -17,7 +17,7 @@ local.properties
 *.class
 *.jar
 *.war
-*target/*
+*/target/**
 
 # External tool builders
 .externalToolBuilders/

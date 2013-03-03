@@ -65,7 +65,7 @@ public class CouchbaseImpl implements Cache {
     }
 
     @Override
-   	public CacheType getType() {
-   		return CacheType.COUCHBASE;
-   	}
+       public CacheType getType() {
+           return CacheType.COUCHBASE;
+       }
 }

@@ -15,8 +15,8 @@ import javax.ws.rs.ext.Provider;
  **/
 @Provider
 public class RuntimeExceptionMapper implements ExceptionMapper<RuntimeException> {
-	@Override
-	public Response toResponse(RuntimeException e) {
+    @Override
+    public Response toResponse(RuntimeException e) {
         Response.ResponseBuilder response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).type(MediaType.APPLICATION_JSON);
         ExceptionMessage msg = new ExceptionMessage("something went terribly wrong: " + e.getMessage());
         Gson gson = new GsonBuilder().setPrettyPrinting().create();

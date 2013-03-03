@@ -19,13 +19,13 @@
     <import resource="classpath:META-INF/cxf/cxf-extension-http-jetty.xml"/>
     <import resource="classpath:META-INF/test-context.xml"/>
 
-    <jaxrs:client id="product-service" address="/" serviceClass="com.parthparekh.ProductWebService">
-   		<jaxrs:headers>
-   			<entry key="Accept" value="application/json"></entry>
-   		</jaxrs:headers>
-   	</jaxrs:client>
+    <jaxrs:client id="product-client" address="/" serviceClass="com.parthparekh.ProductWebService">
+           <jaxrs:headers>
+               <entry key="Accept" value="application/json"></entry>
+           </jaxrs:headers>
+       </jaxrs:client>
 
-    <jaxrs:server id="product-service" address="/">
+    <jaxrs:server id="product-server" address="/">
         <jaxrs:serviceBeans>
             <ref bean="productWebService"/>
         </jaxrs:serviceBeans>

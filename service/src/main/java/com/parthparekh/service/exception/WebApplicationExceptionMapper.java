@@ -18,20 +18,20 @@ import javax.ws.rs.ext.Provider;
  **/
 @Provider
 public class WebApplicationExceptionMapper implements ExceptionMapper<WebApplicationException> {
-	private static final Logger logger = LoggerFactory.getLogger(WebApplicationExceptionMapper.class);
+    private static final Logger logger = LoggerFactory.getLogger(WebApplicationExceptionMapper.class);
 
-	@Override
-	public Response toResponse(WebApplicationException e) {
-		int status = e.getResponse().getStatus();
-		if (status == 0) {
-			logger.warn("unexpected empty status", e);
-			status = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
-		}
-		ExceptionMessage msg = new ExceptionMessage(e.getMessage());
-		Response.ResponseBuilder response = Response.status(status).type(MediaType.APPLICATION_JSON);
+    @Override
+    public Response toResponse(WebApplicationException e) {
+        int status = e.getResponse().getStatus();
+        if (status == 0) {
+            logger.warn("unexpected empty status", e);
+            status = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
+        }
+        ExceptionMessage msg = new ExceptionMessage(e.getMessage());
+        Response.ResponseBuilder response = Response.status(status).type(MediaType.APPLICATION_JSON);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         response.entity(gson.toJson(msg) + "\n");
-		return response.build();
-	}
+        return response.build();
+    }
 
 }

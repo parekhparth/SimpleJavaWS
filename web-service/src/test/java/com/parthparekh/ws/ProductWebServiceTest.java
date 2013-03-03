@@ -29,7 +29,7 @@ public class ProductWebServiceTest {
     private static final Logger logger = LoggerFactory.getLogger(ProductWebServiceTest.class);
 
     @Autowired
-   	private ProductWebService productWebService;
+       private ProductWebService productWebService;
 
     @Autowired
     private TestUtils testUtils;

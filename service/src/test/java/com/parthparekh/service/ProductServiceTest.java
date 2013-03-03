@@ -36,8 +36,8 @@ public class ProductServiceTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Autowired
-   	@Qualifier("cache")
-   	private ProductService productService;
+    @Qualifier("cache")
+    private ProductService productService;
 
     @Autowired
     @Qualifier("defaultCache")

@@ -34,23 +34,22 @@ public class ServiceConfiguration {
     @Value("${memcached.cache.connection.uri}")
     private String memcachedCacheConnectionURI;
 
-	@Value("${cache.read.timeout:500}")
-	private int cacheReadTimeout;
+    @Value("${cache.read.timeout:500}")
+    private int cacheReadTimeout;
 
     @Value("${cache.write.timeout:500}")
-	private int cacheWriteTimeout;
+    private int cacheWriteTimeout;
 
     @Value("${cache.enqueue.timeout:500}")
-	private int cacheEnqueueTimeout;
+    private int cacheEnqueueTimeout;
 
-	private ObjectMapper defaultObjectMapper;
+    private ObjectMapper defaultObjectMapper;
 
     @Autowired
     private CacheManager cacheManager;
 
-
     @Bean(name="defaultCache")
-	public Cache getCache() throws IOException {
+    public Cache getCache() throws IOException {
         CacheType cType = CacheType.getByType(cacheType);
         switch (cType) {
             case MEMCACHED:
@@ -65,7 +64,7 @@ public class ServiceConfiguration {
             default:
                 throw new IllegalStateException("something is terribly wrong.. should never reach here");
         }
-	}
+    }
 
     private Cache getCouchbaseCache() throws IOException {
         CouchbaseFactory factory = new CouchbaseFactory();
@@ -83,39 +82,39 @@ public class ServiceConfiguration {
 
     private Cache getMemcache() throws IOException {
         MemcachedFactory factory = new MemcachedFactory();
-   	    factory.setReadTimeout(cacheReadTimeout);
-   	    factory.setWriteTimeout(cacheWriteTimeout);
-   	    factory.setCacheLocations(memcachedCacheConnectionURI);
-   	    factory.setTranscoder(new JsonTranscoder(Object.class, getObjectMapper()));
-   	    MemcachedImpl cache = new MemcachedImpl();
-   	    cache.setObjectMapper(getObjectMapper());
-   	    cache.setCache((MemcachedClientIF) factory.getObject());
+           factory.setReadTimeout(cacheReadTimeout);
+           factory.setWriteTimeout(cacheWriteTimeout);
+           factory.setCacheLocations(memcachedCacheConnectionURI);
+           factory.setTranscoder(new JsonTranscoder(Object.class, getObjectMapper()));
+           MemcachedImpl cache = new MemcachedImpl();
+           cache.setObjectMapper(getObjectMapper());
+           cache.setCache((MemcachedClientIF) factory.getObject());
 
-   	    return cache;
+           return cache;
     }
 
     protected Cache getEhCache() throws IOException {
         EhCacheImpl cache = new EhCacheImpl();
         cache.setCache(cacheManager.getCache("product"));
 
-   	    return cache;
+           return cache;
     }
 
-	@Bean(name="defaultObjectMapper")
+    @Bean(name="defaultObjectMapper")
     public ObjectMapper getObjectMapper() {
-	    if(defaultObjectMapper==null) {
-    		ObjectMapper mapper = new ObjectMapper();
-    		AnnotationIntrospector primary = new JaxbAnnotationIntrospector();
-    		AnnotationIntrospector secondary = new JacksonAnnotationIntrospector();
-    		AnnotationIntrospector pair = new AnnotationIntrospector.Pair(primary, secondary);
-    		mapper.getDeserializationConfig().setAnnotationIntrospector(pair);
-    		mapper.getDeserializationConfig().set(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    		mapper.getSerializationConfig().setAnnotationIntrospector(pair);
-    		mapper.getSerializationConfig().setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
-    		mapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS, false);
+        if(defaultObjectMapper==null) {
+            ObjectMapper mapper = new ObjectMapper();
+            AnnotationIntrospector primary = new JaxbAnnotationIntrospector();
+            AnnotationIntrospector secondary = new JacksonAnnotationIntrospector();
+            AnnotationIntrospector pair = new AnnotationIntrospector.Pair(primary, secondary);
+            mapper.getDeserializationConfig().setAnnotationIntrospector(pair);
+            mapper.getDeserializationConfig().set(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            mapper.getSerializationConfig().setAnnotationIntrospector(pair);
+            mapper.getSerializationConfig().setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
+            mapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS, false);
             mapper.configure(SerializationConfig.Feature.INDENT_OUTPUT, true);
-    		this.defaultObjectMapper = mapper;
-	    }
-		return defaultObjectMapper;
+            this.defaultObjectMapper = mapper;
+        }
+        return defaultObjectMapper;
     }
 }

@@ -23,43 +23,43 @@ import java.util.List;
  * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
  **/
 public class MemcachedFactory implements FactoryBean {
-	private long readTimeout;
-	private long writeTimeout;
-	private String cacheLocations;
-	private Transcoder<Object> transcoder;
+    private long readTimeout;
+    private long writeTimeout;
+    private String cacheLocations;
+    private Transcoder<Object> transcoder;
 
-	
-	public void setReadTimeout(long readTimeout) {
-    	this.readTimeout = readTimeout;
+
+    public void setReadTimeout(long readTimeout) {
+        this.readTimeout = readTimeout;
     }
 
-	public void setWriteTimeout(long writeTimeout) {
-    	this.writeTimeout = writeTimeout;
+    public void setWriteTimeout(long writeTimeout) {
+        this.writeTimeout = writeTimeout;
     }
 
-	public void setCacheLocations(String cacheLocations) {
-    	this.cacheLocations = cacheLocations;
+    public void setCacheLocations(String cacheLocations) {
+        this.cacheLocations = cacheLocations;
     }
 
     public void setTranscoder(Transcoder<Object> transcoder) {
         this.transcoder = transcoder;
     }
-	
-	@Override
+
+    @Override
     public Object getObject() throws IOException {
-		String[] urls = StringUtils.split(cacheLocations, ", ");
-		List<InetSocketAddress> addresses = new ArrayList<InetSocketAddress>();
-		for (String url : urls) {
-			int colonIndex = url.indexOf(":");
-			String host = url.substring(0, colonIndex);
-			int port = NumberUtils.toInt(url.substring(colonIndex + 1, url.length()));
-			if(port==0) {
-				throw new FactoryBeanNotInitializedException("invalid port: cacheLocations=" + cacheLocations);
+        String[] urls = StringUtils.split(cacheLocations, ", ");
+        List<InetSocketAddress> addresses = new ArrayList<InetSocketAddress>();
+        for (String url : urls) {
+            int colonIndex = url.indexOf(":");
+            String host = url.substring(0, colonIndex);
+            int port = NumberUtils.toInt(url.substring(colonIndex + 1, url.length()));
+            if(port==0) {
+                throw new FactoryBeanNotInitializedException("invalid port: cacheLocations=" + cacheLocations);
             }
-			InetSocketAddress address = new InetSocketAddress(host, port);
-			addresses.add(address);
+            InetSocketAddress address = new InetSocketAddress(host, port);
+            addresses.add(address);
         }
-		long timeout = Math.max(readTimeout, writeTimeout);
+        long timeout = Math.max(readTimeout, writeTimeout);
 
         //TODO make all the below properties configurable via properties file
         ConnectionFactoryBuilder builder = new ConnectionFactoryBuilder()
@@ -75,31 +75,31 @@ public class MemcachedFactory implements FactoryBean {
         }
         
         ConnectionFactory connectionFactory = builder.build();
-		return new MemcachedClient(connectionFactory, addresses);
-	}
+        return new MemcachedClient(connectionFactory, addresses);
+    }
 
-	@Override
+    @Override
     public Class<MemcachedClientIF> getObjectType() {
-	    return MemcachedClientIF.class;
+        return MemcachedClientIF.class;
     }
-	
-	@Override
+
+    @Override
     public boolean isSingleton() {
-	    return false;
+        return false;
     }
-	
-	static class MemcachedAlerter implements ConnectionObserver {
-		private static final Logger logger = LoggerFactory.getLogger(MemcachedAlerter.class);
 
-		@Override
+    static class MemcachedAlerter implements ConnectionObserver {
+        private static final Logger logger = LoggerFactory.getLogger(MemcachedAlerter.class);
+
+        @Override
         public void connectionEstablished(SocketAddress sa, int reconnectCount) {
-			logger.info("memcache connection: addr=" + sa);
+            logger.info("memcache connection: addr=" + sa);
         }
 
-		@Override
+        @Override
         public void connectionLost(SocketAddress sa) {
-			logger.warn("memcache connection: addr=" + sa);
+            logger.warn("memcache connection: addr=" + sa);
         }
-		
-	}
+
+    }
 }

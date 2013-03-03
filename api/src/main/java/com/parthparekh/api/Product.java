@@ -25,10 +25,10 @@ import java.math.BigDecimal;
                 setterVisibility = JsonAutoDetect.Visibility.NONE)
 @JsonPropertyOrder({
         "id",
-		"name",
+        "name",
         "description",
         "status",
-		"price"
+        "price"
 })
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class Product implements Serializable, Cloneable {
@@ -144,9 +144,9 @@ public class Product implements Serializable, Cloneable {
     @Override
     public Product clone() {
         try {
-	        return (Product) super.clone();
+            return (Product) super.clone();
         } catch (CloneNotSupportedException e) {
-        	return null;
+            return null;
         }
     }
 }

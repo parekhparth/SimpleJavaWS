@@ -26,13 +26,13 @@ public class TestServiceConfiguration {
 
 
     @Bean(name="defaultCache")
-	public Cache getCache() throws IOException {
+    public Cache getCache() throws IOException {
         EhCacheImpl cache = new EhCacheImpl();
         cache.setCache(cacheManager.getCache("test-product"));
         return cache;
-	}
+    }
 
-	@Bean(name="defaultObjectMapper")
+    @Bean(name="defaultObjectMapper")
     public ObjectMapper getObjectMapper() {
         ServiceConfiguration sc = new ServiceConfiguration();
         return sc.getObjectMapper();

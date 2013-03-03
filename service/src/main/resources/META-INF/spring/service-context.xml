@@ -8,6 +8,6 @@
     <import resource="classpath:META-INF/ehcache/ehcache.xml"/>
 
     <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-       	<property name="configLocation" value="classpath:/META-INF/ehcache/ehcache.xml"/>
-   	</bean>
+           <property name="configLocation" value="classpath:/META-INF/ehcache/ehcache.xml"/>
+       </bean>
 </beans>

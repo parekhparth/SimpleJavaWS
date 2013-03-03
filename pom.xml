@@ -272,15 +272,15 @@
             </dependency>
 
             <dependency>
-            	<groupId>spy</groupId>
-            	<artifactId>spymemcached</artifactId>
-            	<version>${spymemcached.version}</version>
+                <groupId>spy</groupId>
+                <artifactId>spymemcached</artifactId>
+                <version>${spymemcached.version}</version>
             </dependency>
 
             <dependency>
-            	<groupId>couchbase</groupId>
-            	<artifactId>couchbase-client</artifactId>
-            	<version>${couchbase.client.verstion}</version>
+                <groupId>couchbase</groupId>
+                <artifactId>couchbase-client</artifactId>
+                <version>${couchbase.client.verstion}</version>
             </dependency>
 
             <dependency>

@@ -15,8 +15,8 @@ import javax.ws.rs.ext.Provider;
  **/
 @Provider
 public class IllegalArgumentExceptionMapper implements ExceptionMapper<IllegalArgumentException> {
-	@Override
-	public Response toResponse(IllegalArgumentException e) {
+    @Override
+    public Response toResponse(IllegalArgumentException e) {
         Response.ResponseBuilder response = Response.status(Response.Status.BAD_REQUEST).type(MediaType.APPLICATION_JSON);
         ExceptionMessage msg = new ExceptionMessage(e.getMessage());
         Gson gson = new GsonBuilder().setPrettyPrinting().create();

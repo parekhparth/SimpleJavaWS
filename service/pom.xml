@@ -74,13 +74,13 @@
         </dependency>
 
         <dependency>
-        	<groupId>spy</groupId>
-        	<artifactId>spymemcached</artifactId>
+            <groupId>spy</groupId>
+            <artifactId>spymemcached</artifactId>
         </dependency>
 
         <dependency>
-        	<groupId>couchbase</groupId>
-        	<artifactId>couchbase-client</artifactId>
+            <groupId>couchbase</groupId>
+            <artifactId>couchbase-client</artifactId>
         </dependency>
 
         <dependency>

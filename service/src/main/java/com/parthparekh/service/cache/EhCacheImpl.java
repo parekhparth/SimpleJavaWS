@@ -16,8 +16,8 @@ public class EhCacheImpl implements Cache {
     private Ehcache cache;
 
     public Ehcache getCache() {
-		return cache;
-	}
+        return cache;
+    }
 
     public void setCache(Ehcache cache) {
         this.cache = cache;
@@ -64,10 +64,10 @@ public class EhCacheImpl implements Cache {
         return null;
     }
 
-	@Override
-	public CacheType getType() {
-		return CacheType.EHCACHE;
-	}
+    @Override
+    public CacheType getType() {
+        return CacheType.EHCACHE;
+    }
 
     public void removeAll() {
         cache.removeAll();

@@ -10,11 +10,11 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
  **/
 @JsonPropertyOrder(value = {"errorMessage"})
 public class ExceptionMessage {
-	private String errorMessage = "something went wrong";
+    private String errorMessage = "something went wrong";
 
-   	public ExceptionMessage(String errorMessage) {
-   		this.errorMessage = errorMessage;
-   	}
+       public ExceptionMessage(String errorMessage) {
+           this.errorMessage = errorMessage;
+       }
 
     @Override
     public String toString() {

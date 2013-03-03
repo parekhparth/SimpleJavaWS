@@ -32,37 +32,37 @@ public class CouchbaseFactory implements FactoryBean
 {
     private static Logger logger = LoggerFactory.getLogger(CouchbaseFactory.class);
 
-	private long readTimeout;
-	private long writeTimeout;
+    private long readTimeout;
+    private long writeTimeout;
     private long enqueueTimeout;
-	private String connectionURI;
+    private String connectionURI;
     private String bucketName;
     private String userName;
     private String password;
-	
-	private Transcoder<Object> transcoder;
-	
-	public void setReadTimeout(long readTimeout) {
-    	this.readTimeout = readTimeout;
+
+    private Transcoder<Object> transcoder;
+
+    public void setReadTimeout(long readTimeout) {
+        this.readTimeout = readTimeout;
     }
 
-	public void setWriteTimeout(long writeTimeout) {
-    	this.writeTimeout = writeTimeout;
+    public void setWriteTimeout(long writeTimeout) {
+        this.writeTimeout = writeTimeout;
     }
 
     public void setConnectionURI(String connectionURI) {
-    	this.connectionURI = connectionURI;
+        this.connectionURI = connectionURI;
     }
 
     public void setTranscoder(Transcoder<Object> transcoder) {
         this.transcoder = transcoder;
     }
-	
-	
-	@Override
+
+
+    @Override
     public Object getObject() throws IOException {
-		List<URI> addresses = getAddresses(connectionURI);
-		long timeout = Math.max(readTimeout, writeTimeout);
+        List<URI> addresses = getAddresses(connectionURI);
+        long timeout = Math.max(readTimeout, writeTimeout);
         //TODO make all the below properties configurable via properties file
         ConnectionFactoryBuilder builder = new CouchbaseConnectionFactoryBuilder()
                 .setOpTimeout(timeout)                      // wait up to timeout seconds for an operation to succeed
@@ -78,10 +78,10 @@ public class CouchbaseFactory implements FactoryBean
 
         //assuming there isn't any password set for Couchbase
         CouchbaseConnectionFactory connectionFactory
-			= ((CouchbaseConnectionFactoryBuilder)builder).buildCouchbaseConnection(addresses, "default", "", "");
-		
-		return new CouchbaseClient(connectionFactory);
-	}
+            = ((CouchbaseConnectionFactoryBuilder)builder).buildCouchbaseConnection(addresses, "default", "", "");
+
+        return new CouchbaseClient(connectionFactory);
+    }
 
     protected List<URI> getAddresses(String connectionURI) {
         Assert.notNull(connectionURI, "couchbase connection URI is null");
@@ -102,14 +102,14 @@ public class CouchbaseFactory implements FactoryBean
     }
 
 
-	@Override
+    @Override
     public Class<CouchbaseClientIF> getObjectType() {
-	    return CouchbaseClientIF.class;
+        return CouchbaseClientIF.class;
     }
-	
-	@Override
+
+    @Override
     public boolean isSingleton() {
-	    return false;
+        return false;
     }
 
     public void setUserName(String userName) {
@@ -125,16 +125,16 @@ public class CouchbaseFactory implements FactoryBean
     }
 
     static class CouchbaseAlerter implements ConnectionObserver {
-		private static final Logger logger = LoggerFactory.getLogger(CouchbaseAlerter.class);
+        private static final Logger logger = LoggerFactory.getLogger(CouchbaseAlerter.class);
 
-		@Override
+        @Override
         public void connectionEstablished(SocketAddress sa, int reconnectCount) {
-			logger.info("couchbase connection: addr=" + sa);
+            logger.info("couchbase connection: addr=" + sa);
         }
 
-		@Override
+        @Override
         public void connectionLost(SocketAddress sa) {
-			logger.warn("couchbase connection: addr=" + sa);
+            logger.warn("couchbase connection: addr=" + sa);
         }
-	}
+    }
 }

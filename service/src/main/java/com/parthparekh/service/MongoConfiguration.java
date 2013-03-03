@@ -42,12 +42,11 @@ public class MongoConfiguration extends AbstractMongoConfiguration {
     @Value("${mongodb.connections:10}")
     private int connections;
 
-    @Value("${connectionTimeout:1000}")
-	private int connectionTimeout;
+    @Value("${mongodb.connection.timeout:1000}")
+    private int connectionTimeout;
 
-    @Value("${socketTimeout:1000}")
-	private int socketTimeout;
-
+    @Value("${mongodb.socket.timeout:1000}")
+    private int socketTimeout;
 
     @Bean
     @Override
@@ -65,7 +64,7 @@ public class MongoConfiguration extends AbstractMongoConfiguration {
     }
 
     @Bean
-   	public MongoFactoryBean mongoFactory() throws Exception {
+    public MongoFactoryBean mongoFactory() throws Exception {
         MongoOptions mongoOptions = new MongoOptions();
         mongoOptions.connectionsPerHost = connections;
         MongoFactoryBean mongoFactoryBean = new MongoFactoryBean();
@@ -84,7 +83,7 @@ public class MongoConfiguration extends AbstractMongoConfiguration {
         mongoFactoryBean.setMongoOptions(mongoOptions);
 
         return mongoFactoryBean;
-   	}
+    }
 
     protected ServerAddress[] getServerAddresses() {
         Iterable<String> urlSplit = getReplicaSetsIterable();
@@ -117,7 +116,7 @@ public class MongoConfiguration extends AbstractMongoConfiguration {
 
     protected boolean isReplicaSet() {
         Iterable<String> urlSplit = getReplicaSetsIterable();
-		return Iterables.size(urlSplit) > 1;
+        return Iterables.size(urlSplit) > 1;
     }
 
     @Bean(name={"productMongoTemplate"})

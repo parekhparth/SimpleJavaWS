@@ -41,12 +41,12 @@ public interface Cache {
      * @param clazz - class type of object
      * @return value of T object, null otherwise
      */
-	public <T> T get(String key, Class<T> clazz);
+    public <T> T get(String key, Class<T> clazz);
 
     /**
      * Returns the CacheType for the cache
      *
      * @return the CacheType of the cache
      */
-	public CacheType getType();
+    public CacheType getType();
 }

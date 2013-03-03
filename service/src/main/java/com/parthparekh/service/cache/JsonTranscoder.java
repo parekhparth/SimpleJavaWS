@@ -26,19 +26,19 @@ public class JsonTranscoder extends SerializingTranscoder {
 
     @Override
     protected byte[] serialize(Object value) {
-		if(value == null) {
-			throw new NullPointerException("null cannot be serialized");
-		}
-		byte[] rv=null;
-		try {
-			ByteArrayOutputStream ostream =new ByteArrayOutputStream();
-			objectMapper.writeValue(ostream, value);
-			ostream.close();
-			rv=ostream.toByteArray();
-		} catch(IOException e) {
-			throw new IllegalArgumentException("cannot serialize object: ", e);
-		}
-		return rv;
+        if(value == null) {
+            throw new NullPointerException("null cannot be serialized");
+        }
+        byte[] rv=null;
+        try {
+            ByteArrayOutputStream ostream =new ByteArrayOutputStream();
+            objectMapper.writeValue(ostream, value);
+            ostream.close();
+            rv=ostream.toByteArray();
+        } catch(IOException e) {
+            throw new IllegalArgumentException("cannot serialize object: ", e);
+        }
+        return rv;
     }
 
     @Override
@@ -46,13 +46,13 @@ public class JsonTranscoder extends SerializingTranscoder {
         if(rawData==null || rawData.length==0) {
             return null;
         }
-		try {
-			ByteArrayInputStream istream =new ByteArrayInputStream(rawData);
-			Object value = objectMapper.readValue(rawData, 0, rawData.length, entityClass);
-			istream.close();
-			return value;
-		} catch(IOException e) {
-			throw new IllegalArgumentException("cannot deserialize object: ", e);
-		}
+        try {
+            ByteArrayInputStream istream =new ByteArrayInputStream(rawData);
+            Object value = objectMapper.readValue(rawData, 0, rawData.length, entityClass);
+            istream.close();
+            return value;
+        } catch(IOException e) {
+            throw new IllegalArgumentException("cannot deserialize object: ", e);
+        }
     }
 }

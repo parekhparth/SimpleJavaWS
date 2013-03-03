@@ -70,7 +70,7 @@ public class MemcachedImpl implements Cache {
     }
 
     @Override
-   	public CacheType getType() {
-   		return CacheType.MEMCACHED;
-   	}
+       public CacheType getType() {
+           return CacheType.MEMCACHED;
+       }
 }
