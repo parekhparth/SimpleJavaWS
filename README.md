@@ -208,6 +208,7 @@ above command will start the server on 8110 port. You can run following example 
 # TODO
 * add MySQL and Cassandra examples
 * add load test numbers
+* add support for more caches like Redis
 
 
 # LICENSE
