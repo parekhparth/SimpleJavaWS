@@ -77,7 +77,9 @@ Assuming maven and everything else is setup; you're ready to test the web servic
 
 Web service reads from cache and writes to disk. Cache invalidation happens during update and new value is pushed to cache after successful DB update
 
-The web service implementend in the template is Product Web Service with following model:
+The example web service implemented is "Product Web Service" where you can create, update and retrieve one or all the products.
+
+Produt model is described below:
 
 
 ## Product Data Model
