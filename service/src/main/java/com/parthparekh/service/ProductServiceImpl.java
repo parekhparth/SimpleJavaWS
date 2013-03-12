@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Implementation for Product service
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 @Service
 @Transactional

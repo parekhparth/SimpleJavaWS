@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Product web service implementation
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 @Path("products/v1")
 @Service("productWebService")

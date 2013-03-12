@@ -3,7 +3,7 @@ package com.parthparekh.service.exception;
 /**
  * Exception for no data found
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 public class NoDataFoundException extends RuntimeException {
 

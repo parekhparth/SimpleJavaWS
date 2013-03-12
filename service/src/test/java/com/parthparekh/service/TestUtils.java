@@ -19,7 +19,7 @@ import java.net.UnknownHostException;
 /**
  * Utility functions for test
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 @Component
 public class TestUtils {

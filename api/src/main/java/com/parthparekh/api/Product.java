@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 /**
  * Product document for mongoDB serialization
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 @Document
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY,

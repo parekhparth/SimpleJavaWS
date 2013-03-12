@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * Test ProductWebService functions
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:/META-INF/test-application-context.xml" })

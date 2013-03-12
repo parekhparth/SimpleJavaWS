@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Test ProductService functions
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/META-INF/test-context.xml"})

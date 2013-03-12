@@ -10,7 +10,7 @@ import org.springframework.util.Assert;
 /**
  * Utility class for Product Service
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 @Component
 public class ProductServiceUtils {

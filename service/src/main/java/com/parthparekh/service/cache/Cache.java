@@ -3,7 +3,7 @@ package com.parthparekh.service.cache;
 /**
  * Cache API with basic cache operations
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  */
 public interface Cache {
 

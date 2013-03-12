@@ -11,7 +11,7 @@ import javax.ws.rs.ext.Provider;
 /**
  * NoDataFoundException mapper class
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 @Provider
 public class NoDataFoundExceptionMapper implements ExceptionMapper<NoDataFoundException> {

@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * Enum for types of Caches
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 public enum CacheType {
     MEMCACHED,

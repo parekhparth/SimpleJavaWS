@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Configuration class for Tests
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 @Configuration
 public class TestServiceConfiguration {

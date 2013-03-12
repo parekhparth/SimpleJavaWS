@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Interface for ProductService - defines the basic operations that Product service offers
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 public interface ProductService {
 

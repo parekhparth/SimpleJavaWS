@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 /**
  * Test to de-serialize Product object
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 public class ProductDeSerializationTest {
 

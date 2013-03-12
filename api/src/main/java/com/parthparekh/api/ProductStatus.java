@@ -3,7 +3,7 @@ package com.parthparekh.api;
 /**
  * Product status enum
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 public enum ProductStatus {
     ACTIVE,

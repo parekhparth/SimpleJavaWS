@@ -6,7 +6,7 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
 /**
  * Exception message object
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 @JsonPropertyOrder(value = {"errorMessage"})
 public class ExceptionMessage {

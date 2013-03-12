@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Couchbase client factory
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 public class CouchbaseFactory implements FactoryBean
 {

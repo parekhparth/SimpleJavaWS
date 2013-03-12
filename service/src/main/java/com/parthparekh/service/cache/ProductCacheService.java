@@ -22,7 +22,7 @@ import java.util.List;
  * for get - this service will first check the cache; if the value is not found, it will query the mongoDb
  * (by calling productSericeImpl)
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 @Service
 @Transactional

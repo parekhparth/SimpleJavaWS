@@ -14,7 +14,7 @@ import javax.ws.rs.ext.Provider;
 /**
  * WebApplicationException mapper class
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 @Provider
 public class WebApplicationExceptionMapper implements ExceptionMapper<WebApplicationException> {

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Memcache cache implementation
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 public class EhCacheImpl implements Cache {
     private static Logger logger = LoggerFactory.getLogger(EhCacheImpl.class);

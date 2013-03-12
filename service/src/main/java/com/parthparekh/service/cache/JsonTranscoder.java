@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * JSON transcoder to serialize/deserialize object for caching
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 public class JsonTranscoder extends SerializingTranscoder {
     private ObjectMapper objectMapper;

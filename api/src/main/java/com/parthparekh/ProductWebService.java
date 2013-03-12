@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Interface for ProductWebService - defines the basic operations that Product web service offers
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 @Path("products/v1")
 @Produces(MediaType.APPLICATION_JSON)

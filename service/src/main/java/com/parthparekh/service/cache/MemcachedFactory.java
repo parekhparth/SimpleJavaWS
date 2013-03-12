@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Memcache client factory
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 public class MemcachedFactory implements FactoryBean {
     private long readTimeout;

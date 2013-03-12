@@ -13,7 +13,7 @@ import java.util.concurrent.Future;
 /**
  * Memcache cache implementation
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 public class MemcachedImpl implements Cache {
     private static Logger logger = LoggerFactory.getLogger(MemcachedImpl.class);

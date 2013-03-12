@@ -12,7 +12,7 @@ import java.util.concurrent.Future;
 /**
  * Couchbase cache implementation
  *
- * @author: Parth Parekh (parthparekh [at] gatech [dot] edu)
+ * @author: Parth Parekh
  **/
 public class CouchbaseImpl implements Cache {
     private static Logger logger = LoggerFactory.getLogger(CouchbaseImpl.class);
