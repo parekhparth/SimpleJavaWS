@@ -1,0 +1,8 @@
+com.parthparekh
+com.parthparekh.api
+com.parthparekh.service
+com.parthparekh.service.cache
+com.parthparekh.service.db
+com.parthparekh.service.exception
+com.parthparekh.service.utils
+com.parthparekh.ws
