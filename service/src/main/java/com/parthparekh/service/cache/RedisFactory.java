@@ -17,7 +17,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Memcache client factory
+ * Redis client factory
  *
  * @author: Artemis Tsikiridis
  * @author: George Tsiros
@@ -70,7 +70,7 @@ public class RedisFactory implements FactoryBean {
 	
     @Override
     public Class<MemcachedClientIF> getObjectType() {
-        return JedisClient.class;
+        return Client.class;
     }
 
     @Override
