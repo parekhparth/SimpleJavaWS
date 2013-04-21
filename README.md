@@ -64,7 +64,7 @@ Download it from <a href='http://www.couchbase.com/download'>here</a>
 
 # Setup
 
-Configuration file can be found <a href='https://github.com/parekhparth/SimpleJavaWS/service/src/main/resources/META-INF/configuration.properties'>here</a>
+Configuration file can be found <a href='https://github.com/parekhparth/SimpleJavaWS/blob/master/service/src/main/resources/META-INF/configuration.properties'>here</a>
 
 Change the "cache.type=memcached" to whatever cache you're using.
 
