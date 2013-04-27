@@ -2,6 +2,9 @@ package com.parthparekh.service.cache;
 
 import redis.clients.jedis.Connection;
 import redis.clients.jedis.Client;
+import redis.clients.jedis.JedisShardInfo;
+import redis.clients.jedis.ShardedJedis;
+import redis.clients.util.MurmurHash;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.slf4j.Logger;
@@ -27,6 +30,7 @@ public class RedisFactory implements FactoryBean {
     private long readTimeout;
     private long writeTimeout;
     private String cacheLocations;
+    private String weightOfHosts;
 
     public void setReadTimeout(long readTimeout) {
         this.readTimeout = readTimeout;
@@ -38,39 +42,43 @@ public class RedisFactory implements FactoryBean {
 
     public void setCacheLocations(String cacheLocations) {
         this.cacheLocations = cacheLocations;
+    }
+
+    public void setWeightOfHosts(String weightOfHosts) {
+        this.weightOfHosts = weightOfHosts;
     }    
 
     @Override
     public Object getObject() {
         String[] urls = StringUtils.split(cacheLocations, ", ");
-        List<InetSocketAddress> addresses = new ArrayList<InetSocketAddress>();
-        for (String url : urls) {
-            int colonIndex = url.indexOf(":");
-            String host = url.substring(0, colonIndex);
-            int port = NumberUtils.toInt(url.substring(colonIndex + 1, url.length()));
+        String[] weights  = StringUtils.split(weightOfHosts, ", ");
+	if (urls.length < weights.length) {
+                throw new FactoryBeanNotInitializedException("invalid number of weights: weightOfHosts=  " + weightOfHosts + " (Number of weights > Number of urls)");
+        }            
+        List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
+        long timeout = Math.max(readTimeout, writeTimeout);
+        for ( int i = 0; i < urls.length; i++) {
+            int colonIndex = urls[i].indexOf(":");
+            String host = urls[i].substring(0, colonIndex);
+            int port = NumberUtils.toInt(urls[i].substring(colonIndex + 1, urls[i].length()));
             if(port==0) {
                 throw new FactoryBeanNotInitializedException("invalid port: cacheLocations=" + cacheLocations);
             }
-            InetSocketAddress address = new InetSocketAddress(host, port);
-            addresses.add(address);
-        }
-        long timeout = Math.max(readTimeout, writeTimeout);
-
-	//TODO use other parameters by Jedis
-	Client jedisClient = new Client(host,port);
-	
-	if( timeout == -1 ) {
-	    jedisClient.setTimeoutInfinite();
-	}
-	else {
-	    jedisClient.setTimeout(timeout);
-	}
+	    if( weights[i] == null) {
+	        weights[i] = "1";
+            }
+	    int weight = Integer.parseInt(weights[i]);
+            JedisShardInfo jedisShardInfo = new JedisShardInfo(host, port, (int) timeout,weight);
+            shards.add(jedisShardInfo);
+        }	
+        MurmurHash murmurHash = new MurmurHash();
+	ShardedJedis jedisClient = new ShardedJedis(shards,murmurHash);	
         return jedisClient;
-	
+    }	
 	
     @Override
-    public Class<MemcachedClientIF> getObjectType() {
-        return Client.class;
+    public Class<ShardedJedis> getObjectType() {
+        return ShardedJedis.class;
     }
 
     @Override
@@ -78,9 +86,4 @@ public class RedisFactory implements FactoryBean {
         return false;
     }
         
-	
-
-    }	
-
-
 }
