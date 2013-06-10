@@ -1,8 +1,7 @@
 package com.parthparekh.service.cache;
 
-import redis.clients.jedis.Connection;
-import redis.clients.jedis.Client;
 import redis.clients.jedis.JedisShardInfo;
+import redis.clients.jedis.JedisCommands;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.util.MurmurHash;
 import org.apache.commons.lang.StringUtils;
@@ -50,8 +49,8 @@ public class RedisFactory implements FactoryBean {
 
     @Override
     public Object getObject() {
-        String[] urls = StringUtils.split(cacheLocations, ", ");
-        String[] weights  = StringUtils.split(weightOfHosts, ", ");
+        String[] urls = StringUtils.split(cacheLocations, ",");
+        String[] weights  = StringUtils.split(weightOfHosts, ",");
 	if (urls.length < weights.length) {
                 throw new FactoryBeanNotInitializedException("invalid number of weights: weightOfHosts=  " + weightOfHosts + " (Number of weights > Number of urls)");
         }            
@@ -77,8 +76,8 @@ public class RedisFactory implements FactoryBean {
     }	
 	
     @Override
-    public Class<ShardedJedis> getObjectType() {
-        return ShardedJedis.class;
+    public Class<JedisCommands> getObjectType() {
+        return JedisCommands.class;
     }
 
     @Override

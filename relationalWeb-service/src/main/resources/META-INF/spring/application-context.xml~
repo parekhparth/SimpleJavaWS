@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+       http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd"
+       default-lazy-init="false" xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:cxf="http://cxf.apache.org/core">
+
+    <context:component-scan base-package="com.parthparekh" />
+    <import resource="classpath:META-INF/spring/relationalservice-context.xml"/>
+
+    <!-- cxf -->
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+
+    <context:annotation-config/>
+
+    <jaxrs:server id="product-service" address="/">
+        <jaxrs:serviceBeans>
+            <ref bean="relationalproductWebService"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider">
+                <property name="mapper" ref="defaultObjectMapper"/>
+            </bean>
+            <bean class="com.parthparekh.service.exception.NoDataFoundExceptionMapper"/>
+            <bean class="com.parthparekh.service.exception.WebApplicationExceptionMapper"/>
+            <bean class="com.parthparekh.service.exception.JsonParseExceptionMapper"/>
+            <bean class="com.parthparekh.service.exception.IllegalArgumentExceptionMapper"/>
+            <bean class="com.parthparekh.service.exception.RuntimeExceptionMapper"/>
+        </jaxrs:providers>
+        <jaxrs:features>
+            <cxf:logging limit="1024"/>
+        </jaxrs:features>
+    </jaxrs:server>
+
+    <bean id="logInbound" class="org.apache.cxf.interceptor.LoggingInInterceptor" />
+    <bean id="logOutbound" class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
+</beans>
