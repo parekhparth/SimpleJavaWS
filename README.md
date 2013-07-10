@@ -5,7 +5,7 @@
 * Cache invalidation happens during create/update.
 * The Java WS framework is mostly servlet web services hosted on Apache Tomcat container.
 
-<b>P.S.</b> thanks to <a href='https://github.com/atsikiridis'>Artemis</a> and <a href='https://github.com/geotsiros'>George</a> for implementing support for Redis, MySQL and Cassandra
+<b>P.S.:</b> Thanks to <a href='https://github.com/atsikiridis'>Artemis</a> and <a href='https://github.com/geotsiros'>George</a> for implementing support for Redis, MySQL and Cassandra
 
 # Technologies and Frameworks used
 * __Spring Framework (for DI)__
