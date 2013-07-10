@@ -56,11 +56,25 @@ start it on a different port using following command:
 
 Download it from <a href='http://www.couchbase.com/download'>here</a>
 
+- Redis
+
+Download it from <a href='http://redis.io/download'>here</a> (setup instructions to follow)
+
+- Cassandra
+
+Download it from <a href='http://cassandra.apache.org/download/'>here</a> (setup instructions to follow)
+
+- MySQL 
+
+Download it from <a href='http://dev.mysql.com/downloads/'>here</a> (setup instructions to follow)
 
 # Build
 		git clone https://github.com/parekhparth/SimpleJavaWS.git
 
 		cd SimpleJavaWS
+
+		mvn clean install -DskipTests=true
+(above command builds web-service-1.0-SNAPSHOT.war without running tests)
 
 		mvn clean install
 (above command runs the tests and builds web-service-1.0-SNAPSHOT.war)

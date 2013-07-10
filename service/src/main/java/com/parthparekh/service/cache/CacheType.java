@@ -10,7 +10,8 @@ import org.apache.commons.lang.StringUtils;
 public enum CacheType {
     MEMCACHED,
     COUCHBASE,
-    EHCACHE;
+    EHCACHE,
+    REDIS;
 
     public String getType() {
         return this.name();

@@ -93,7 +93,7 @@ public class RedisImpl implements Cache {
            value = objectMapper.readValue(object, clazz);	    
 	}
 	catch(IOException e)  {
-	    throw new IllegalArgumentException("cannot deserialize object: " + e ;	
+	    throw new IllegalArgumentException("cannot deserialize object: " + e);	
 	}
 
 	return (T) value;    

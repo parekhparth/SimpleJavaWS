@@ -1,22 +1,17 @@
 package com.parthparekh.service.cache;
 
-import redis.clients.jedis.JedisShardInfo;
-import redis.clients.jedis.JedisCommands;
-import redis.clients.jedis.ShardedJedis;
-import redis.clients.util.MurmurHash;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.FactoryBeanNotInitializedException;
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import redis.clients.jedis.JedisCommands;
+import redis.clients.jedis.JedisShardInfo;
+import redis.clients.jedis.ShardedJedis;
+import redis.clients.util.MurmurHash;
 
 /**
  * Redis client factory
