@@ -5,6 +5,7 @@
 * Cache invalidation happens during create/update.
 * The Java WS framework is mostly servlet web services hosted on Apache Tomcat container.
 
+<b>P.S.</b> thanks to <a href='https://github.com/atsikiridis'>Artemis</a> and <a href='https://github.com/geotsiros'>George</a> for implementing support for Redis, MySQL and Cassandra
 
 # Technologies and Frameworks used
 * __Spring Framework (for DI)__
@@ -19,6 +20,9 @@
 * __Apache Tomcat__
 * __Maven__
 * __Java__
+* __Redis__
+* __MySQL__
+* __Cassandra__
 
 
 # Prerequisites
@@ -206,9 +210,8 @@ above command will start the server on 8110 port. You can run following example 
 ```
 
 # TODO
-* add MySQL and Cassandra examples
+* document Redis, MySQL and Cassandra setup
 * add load test numbers
-* add support for more caches like Redis
 
 
 # LICENSE
