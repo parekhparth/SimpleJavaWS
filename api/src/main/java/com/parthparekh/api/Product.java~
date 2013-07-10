@@ -35,7 +35,6 @@ import javax.xml.bind.annotation.XmlRootElement;
         "price"
 })
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-@XmlRootElement(name = "products")
 public class Product implements Serializable, Cloneable {
     private static final long serialVersionUID = 1L;
 
